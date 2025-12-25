@@ -1,10 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogOut, User, GraduationCap } from 'lucide-react';
+import { LogOut, User, GraduationCap, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 const Navbar = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <nav className="bg-gradient-to-r from-brand-50 via-white to-brand-50 text-brand-900 shadow-md border-b border-brand-100 sticky top-0 z-50">
@@ -28,8 +31,8 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Navigation/User Section */}
-                    <div className="flex items-center space-x-6">
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-6">
                         {user ? (
                             <>
                                 <div className="flex items-center space-x-3 pl-6">
@@ -73,8 +76,74 @@ const Navbar = () => {
                             </Link>
                         )}
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden flex items-center">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="p-2 rounded-md text-brand-600 hover:text-brand-900 hover:bg-brand-100 focus:outline-none"
+                        >
+                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                        </button>
+                    </div>
                 </div>
             </div>
+
+            {/* Mobile Menu Dropdown */}
+            {isOpen && (
+                <div className="md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0 z-50">
+                    <div className="px-4 pt-4 pb-6 space-y-4">
+                        {user ? (
+                            <>
+                                <div className="flex items-center space-x-3 mb-4 p-3 bg-brand-50 rounded-lg">
+                                    <div className="h-10 w-10 bg-brand-200 rounded-full flex items-center justify-center text-brand-700">
+                                        <User className="h-5 w-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold text-brand-900">{user.name}</p>
+                                        <p className="text-xs font-medium text-brand-500 uppercase">{user.role}</p>
+                                    </div>
+                                </div>
+
+                                {user.role === 'librarian' && (
+                                    <Link to="/librarian/dashboard" className="block text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 px-3 py-2 rounded-md" onClick={() => setIsOpen(false)}>
+                                        Library Dashboard
+                                    </Link>
+                                )}
+                                {user.role === 'placement_officer' && (
+                                    <Link to="/placement/dashboard" className="block text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 px-3 py-2 rounded-md" onClick={() => setIsOpen(false)}>
+                                        Placement Dashboard
+                                    </Link>
+                                )}
+                                {user.role === 'hostel_warden' && (
+                                    <Link to="/hostel/dashboard" className="block text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 px-3 py-2 rounded-md" onClick={() => setIsOpen(false)}>
+                                        Hostel Dashboard
+                                    </Link>
+                                )}
+
+                                <button
+                                    onClick={() => {
+                                        logout();
+                                        setIsOpen(false);
+                                    }}
+                                    className="w-full flex items-center text-base font-medium text-red-600 hover:bg-red-50 px-3 py-2 rounded-md transition-colors"
+                                >
+                                    <LogOut className="h-5 w-5 mr-3" />
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <Link
+                                to="/login"
+                                className="block w-full text-center px-6 py-3 rounded-lg bg-brand-600 text-white font-bold shadow-md hover:bg-brand-700"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Login
+                            </Link>
+                        )}
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };

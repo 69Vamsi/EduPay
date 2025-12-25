@@ -130,8 +130,8 @@ const StudentDashboard = () => {
 
 
             {/* Profile Summary */}
-            <div className="bg-white rounded-xl shadow-lg border-l-4 border-brand-500 p-8 flex flex-wrap gap-8 items-center hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center space-x-5">
+            <div className="bg-white rounded-xl shadow-lg border-l-4 border-brand-500 p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center space-x-5 w-full md:w-auto justify-center md:justify-start">
                     <div className="relative group">
                         <div className="h-20 w-20 rounded-full ring-4 ring-brand-100 overflow-hidden bg-brand-50 flex items-center justify-center">
                             {profile?.user?.photoUrl ? (
@@ -199,62 +199,64 @@ const StudentDashboard = () => {
 
             {/* Fee Details Tabs Section */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-gray-50/50 border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+                <div className="bg-gray-50/50 border-b border-gray-200 px-4 md:px-6 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <h3 className="text-xl font-serif font-bold text-gray-900 flex items-center">
                         <Wallet className="mr-3 h-6 w-6 text-brand-600" />
                         Fee Details
                     </h3>
-                    <div className="bg-white p-1 rounded-lg border border-gray-200 flex shadow-sm">
-                        <button
-                            onClick={() => setFeeTab('college')}
-                            className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'college'
-                                ? 'bg-brand-600 text-white shadow-md'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                                }`}
-                        >
-                            <BookOpen className="w-4 h-4 mr-2" />
-                            Admission Fee
-                        </button>
-                        <button
-                            onClick={() => setFeeTab('transport')}
-                            className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'transport'
-                                ? 'bg-brand-600 text-white shadow-md'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                                }`}
-                        >
-                            <Bus className="w-4 h-4 mr-2" />
-                            Transport Fee
-                        </button>
-                        <button
-                            onClick={() => setFeeTab('library')}
-                            className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'library'
-                                ? 'bg-brand-600 text-white shadow-md'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                                }`}
-                        >
-                            <Book className="w-4 h-4 mr-2" />
-                            Library
-                        </button>
-                        <button
-                            onClick={() => setFeeTab('placement')}
-                            className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'placement'
-                                ? 'bg-brand-600 text-white shadow-md'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                                }`}
-                        >
-                            <Briefcase className="w-4 h-4 mr-2" />
-                            Placement Fee
-                        </button>
-                        <button
-                            onClick={() => setFeeTab('hostel')}
-                            className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'hostel'
-                                ? 'bg-brand-600 text-white shadow-md'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                                }`}
-                        >
-                            <Home className="w-4 h-4 mr-2" />
-                            Hostel Fee
-                        </button>
+                    <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                        <div className="bg-white p-1 rounded-lg border border-gray-200 flex shadow-sm min-w-max">
+                            <button
+                                onClick={() => setFeeTab('college')}
+                                className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'college'
+                                    ? 'bg-brand-600 text-white shadow-md'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                    }`}
+                            >
+                                <BookOpen className="w-4 h-4 mr-2" />
+                                Admission Fee
+                            </button>
+                            <button
+                                onClick={() => setFeeTab('transport')}
+                                className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'transport'
+                                    ? 'bg-brand-600 text-white shadow-md'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                    }`}
+                            >
+                                <Bus className="w-4 h-4 mr-2" />
+                                Transport Fee
+                            </button>
+                            <button
+                                onClick={() => setFeeTab('library')}
+                                className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'library'
+                                    ? 'bg-brand-600 text-white shadow-md'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                    }`}
+                            >
+                                <Book className="w-4 h-4 mr-2" />
+                                Library
+                            </button>
+                            <button
+                                onClick={() => setFeeTab('placement')}
+                                className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'placement'
+                                    ? 'bg-brand-600 text-white shadow-md'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                    }`}
+                            >
+                                <Briefcase className="w-4 h-4 mr-2" />
+                                Placement Fee
+                            </button>
+                            <button
+                                onClick={() => setFeeTab('hostel')}
+                                className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-200 flex items-center ${feeTab === 'hostel'
+                                    ? 'bg-brand-600 text-white shadow-md'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                    }`}
+                            >
+                                <Home className="w-4 h-4 mr-2" />
+                                Hostel Fee
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -470,6 +472,9 @@ const StudentDashboard = () => {
                                 const isLate = exam.lateFee > 0; // Simple check if penalty is set
                                 const totalAmount = exam.examFeeAmount + (isLate ? exam.lateFee : 0);
 
+                                // Library Check
+                                const hasPendingBooks = libraryRecords.some(r => r.status !== 'returned');
+
                                 return (
                                     <div key={exam._id} className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                                         <div className="p-7">
@@ -519,6 +524,10 @@ const StudentDashboard = () => {
                                                     <button disabled className="px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-bold cursor-not-allowed flex items-center border border-gray-200">
                                                         {today < startDate ? "Starts Soon" : "Expired"} <Clock className="ml-2 h-4 w-4" />
                                                     </button>
+                                                ) : hasPendingBooks ? (
+                                                    <button disabled className="px-6 py-3 bg-amber-50 text-amber-600 border border-amber-100 rounded-lg font-bold cursor-not-allowed flex items-center text-sm">
+                                                        Clear Library Dues <Book className="ml-2 h-4 w-4" />
+                                                    </button>
                                                 ) : isExamEligible ? (
                                                     <button
                                                         onClick={() => handlePayment(totalAmount, 'exam_fee', exam._id)}
@@ -532,6 +541,7 @@ const StudentDashboard = () => {
                                                     </button>
                                                 )}
                                             </div>
+
                                         </div>
                                         {/* Strip at bottom */}
                                         <div className={`h-1.5 w-full ${isPaid ? 'bg-emerald-500' : isExamEligible ? 'bg-brand-500' : 'bg-rose-400'}`}></div>

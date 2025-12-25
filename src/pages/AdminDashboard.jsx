@@ -109,7 +109,7 @@ const AdminDashboard = () => {
             <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
 
             {/* Tabs */}
-            <div className="flex space-x-2 md:space-x-4 mb-8 overflow-x-auto pb-2">
+            <div className="flex space-x-2 md:space-x-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
                 {[
                     { id: 'search', label: 'Search & Edit', icon: Search },
                     { id: 'fees', label: 'Fee Config', icon: Settings },
@@ -161,7 +161,7 @@ const AdminDashboard = () => {
                             </div>
 
                             {/* NEW: Dues Summary & Direct Actions */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border-b border-gray-200">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 border-b border-gray-200">
                                 {/* College Fee Box */}
                                 <div className="bg-indigo-50 p-5 rounded-xl border border-indigo-100 flex justify-between items-center">
                                     <div>
@@ -475,7 +475,7 @@ const AdminDashboard = () => {
                         Class Promotion Management
                     </h2>
 
-                    <div className="flex gap-4 items-end mb-6">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:items-end mb-6">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Select Year to Promote</label>
                             <select

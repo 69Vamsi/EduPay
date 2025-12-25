@@ -94,8 +94,9 @@ const LibrarianDashboard = () => {
                             type="text"
                             placeholder="Enter Student USN"
                             value={searchUsn}
-                            onChange={(e) => setSearchUsn(e.target.value.toUpperCase())}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all uppercase font-medium"
+                            onChange={(e) => setSearchUsn(e.target.value)}
+                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all font-medium"
+
                         />
                     </div>
                     <button
@@ -201,8 +202,8 @@ const LibrarianDashboard = () => {
                                             <div className="flex items-center gap-2">
                                                 <h4 className="font-bold text-lg text-gray-900">{record.bookTitle}</h4>
                                                 <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wide ${record.status === 'returned' ? 'bg-green-100 text-green-700' :
-                                                        record.status === 'overdue' ? 'bg-red-100 text-red-700' :
-                                                            'bg-blue-100 text-blue-700'
+                                                    record.status === 'overdue' ? 'bg-red-100 text-red-700' :
+                                                        'bg-blue-100 text-blue-700'
                                                     }`}>
                                                     {record.status}
                                                 </span>
